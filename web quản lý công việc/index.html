@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Schedule</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    #calendar {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+    }
+
+    #calendar th, #calendar td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    #calendar th {
+        background-color: #f2f2f2;
+    }
+
+    .selected {
+        background-color: lightblue;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Work Schedule</h1>
+    <div>
+        <label for="date">Choose a date:</label>
+        <input type="date" id="date">
+        <button onclick="showSchedule()">Show Schedule</button>
+    </div>
+    <table id="calendar"></table>
+</div>
+
+<script>
+    var scheduleData = {
+        '2024-04-23': ['Meeting with team', 'Client call'],
+        '2024-04-24': ['Presentation preparation', 'Training session'],
+        '2024-04-25': ['Project review', 'Development work']
+    };
+
+    function showSchedule() {
+        var dateInput = document.getElementById('date');
+        var selectedDate = new Date(dateInput.value);
+        var calendar = document.getElementById('calendar');
+
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        var html = '<tr><th colspan="7">' + months[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear() + '</th></tr>';
+        html += '<tr>';
+        for (var i = 0; i < days.length; i++) {
+            html += '<th>' + days[i] + '</th>';
+        }
+        html += '</tr>';
+        
+        var firstDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+        var startingDay = firstDayOfMonth.getDay();
+        var numberOfDaysInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
+
+        var currentDate = 1;
+        var week = '';
+        for (var i = 0; i < 6; i++) {
+            week += '<tr>';
+            for (var j = 0; j < 7; j++) {
+                if ((i === 0 && j < startingDay) || (currentDate > numberOfDaysInMonth)) {
+                    week += '<td></td>';
+                } else {
+                    var cellDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), currentDate);
+var cellClass = (cellDate.toDateString() === selectedDate.toDateString()) ? 'selected' : '';/-strong/-heart:>:o:-((:-hweek += '<td class="' + cellClass + '" onclick="showDetails(\'' + selectedDate.getFullYear() + '-' + (selectedDate.getMonth() + 1) + '-' + currentDate + '\')">' + currentDate + '</td>';
+                    currentDate++;
+                }
+            }
+            week += '</tr>';
+        }
+
+        html += week;
+        calendar.innerHTML = html;
+    }
+
+    function showDetails(selectedDate) {
+        var scheduleDetails = document.getElementById('scheduleDetails');
+        scheduleDetails.innerHTML = '<h3>Schedule for ' + selectedDate + '</h3>';
+        var selectedSchedule = scheduleData[selectedDate];
+        if (selectedSchedule && selectedSchedule.length > 0) {
+            var ul = document.createElement('ul');
+            selectedSchedule.forEach(function(task) {
+                var li = document.createElement('li');
+                li.textContent = task;
+                ul.appendChild(li);
+            });
+            scheduleDetails.appendChild(ul);
+        } else {
+            scheduleDetails.innerHTML += '<p>No schedule for this day.</p>';
+        }
+    }
+</script>
+</body>
+</html>
