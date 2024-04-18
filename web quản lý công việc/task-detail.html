@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết công việc</title>
+   </style>
+    <style>
+        #searchInput {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #searchResult {
+            margin-top: 20px;
+        }
+    </style>
+    <body style="background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240209/pngtree-task-management-business-planning-app-illustration-vector-image_15623958.jpg');
+    background-size: cover;
+    background-position: entire;
+    background-repeat: no-repeat;">
+<!-- Nội dung trang web -->
+
+</head>
+<body>
+    <h1> Chi tiết công việc</h1>
+
+    <input type="text" id="searchInput" placeholder="Nhập nội dung cần tìm và nhấn Enter...">
+    <div id="searchResult"></div>
+
+    <script>
+        var congViec = [
+            { tieuDe: "Chọn dự án", moTa: "Chọn một dự án để thực hiện", nguoiGiao: "Leader", deadline: "20-03-2024"},
+            { tieuDe: "Lên kế hoạch", moTa: "Lên kế hoạch thực hiện các công việc trong dự án", nguoiGiao: "Leader", deadline: "22-03-2024"},
+            { tieuDe: "Họp nhóm", moTa: "Họp nhóm để thảo luận về tiến độ dự án", nguoiGiao: "Leader", deadline: "2024-04-25" },
+            { tieuDe: "Thực hiện", moTa: "Thực hiện dự án", nguoiGiao: "Leader", deadline: "01-04-2024"},
+            { tieuDe: "Viết báo cáo", moTa: "Viết báo cáo kết quả dự án", nguoiGiao: "Leader", deadline: "07-05-2024" }
+            // Thêm các công việc khác vào đây
+        ];
+
+        var searchInput = document.getElementById("searchInput");
+        var searchResult = document.getElementById("searchResult");
+
+        searchInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                var searchTerm = searchInput.value.toLowerCase();
+                var foundTasks = congViec.filter(function(task) {
+                    return task.tieuDe.toLowerCase().includes(searchTerm) || task.moTa.toLowerCase().includes(searchTerm) || task.nguoiGiao.toLowerCase().includes(searchTerm) || task.deadline.toLowerCase().includes(searchTerm);
+                });
+
+                displaySearchResults(foundTasks);
+            }
+        });
+
+        function displaySearchResults(tasks) {
+            var html = "";
+            if (tasks.length === 0) {
+                html = "<p>Không tìm thấy kết quả phù hợp.</p>";
+            } else {
+                tasks.forEach(function(task) {
+                    html += "<div>";
+                    html += "<h2>" + task.tieuDe + "</h2>";
+                    html += "<p><strong>Mô tả:</strong> " + task.moTa + "</p>";
+html += "<p><strong>Người giao:</strong> " + task.nguoiGiao + "</p>";
+                    html += "<p><strong>Deadline:</strong> " + task.deadline + "</p>";
+                    html += "</div>";
+                });
+            }
+            searchResult.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
