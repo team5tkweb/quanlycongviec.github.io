@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách công việc</title>
+    <style>
+      task-list {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.task {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.task h3 {
+    margin-top: 0;
+    cursor: pointer; 
+}
+
+.task-content {
+    display: none; 
+}
+
+.task-content.show {
+    display: block; 
+}  
+    </style>
+</head>
+</style>
+<body style="background-image: url('https://png.pngtree.com/thumb_back/fw800/back_our/20190625/ourmid/pngtree-simple-atmosphere-business-corporate-city-architecture-background-poster-image_260530.jpg');
+background-size: cover;
+background-position: entire;
+background-repeat: no-repeat;">
+<body>
+    <div class="task-list">
+        <div class="task">
+            <h3 onclick="toggleTaskContent(this)">Quảng bá du lịch</h3>
+            <p class="task-content">Yêu cầu: Hiển thị hình ảnh và video của điểm du lịch một cách nổi bật
+                Sử dụng bố cục lưới (grid) hoặc flexbox để sắp xếp nội dung</p>
+        </div>
+        <div class="task">
+            <h3 onclick="toggleTaskContent(this)">Thiết kế profile cá nhân</h3>
+            <p class="task-content">Yêu cầu: Thiết kế trang chủ với hình ảnh và giới thiệu ngắn gọn về bản thân
+                Trình bày kỹ năng và dự án một cách rõ ràng và hấp dẫn</p>
+        
+        <div class="task">
+            <h3 onclick="toggleTaskContent(this)">Giới thiệu tin tức</h3>
+            <p class="task-content">Yêu cầu: Thiết kế trang chủ với các tin tức nổi bật và danh mục tin tức
+                Sử dụng menu điều hướng với các chuyên mục tin tức khác nhau
+                Hiển thị bài viết với hình ảnh, tiêu đề và tóm tắt
+                Tạo trang tìm kiếm tin tức và trang chi tiết bài viết</p>
+        </div>
+        
+        <div class="task">
+<h3 onclick="toggleTaskContent(this)">Đặt lịch hẹn</h3>
+            <p class="task-content">Yêu cầu: Thiết kế trang chủ với danh sách dịch vụ và lịch hẹn sắp tới
+                Sử dụng menu điều hướng để truy cập đặt lịch hẹn và quản lý lịch hẹn
+                Hiển thị biểu mẫu đặt lịch hẹn với lựa chọn dịch vụ, ngày giờ và thông tin liên hệ
+                Tạo trang quản lý lịch hẹn với chế độ xem theo ngày và tuần</p>
+        </div>
+        <div class="task">
+            <h3 onclick="toggleTaskContent(this)">Quản lý tài chính cá nhân</h3>
+            <p class="task-content">Yêu cầu: Thiết kế trang chủ với tổng quan về tài chính cá nhân
+                Sử dụng menu điều hướng để truy cập các tính năng khác nhau
+                Hiển thị danh sách giao dịch với thông tin chi tiết và biểu đồ
+                Tạo trang lập ngân sách và đặt mục tiêu tài chính</p>
+        </div>
+        <div class="task">
+            <h3 onclick="toggleTaskContent(this)">Quản lý sự kiện</h3>
+            <p class="task-content">Yêu cầu: Thiết kế trang chủ với danh sách sự kiện sắp diễn ra và sự kiện nổi bật
+                Sử dụng menu điều hướng để truy cập danh sách sự kiện, tạo sự kiện và hồ sơ người dùng
+                Hiển thị chi tiết sự kiện với hình ảnh, mô tả, thời gian và địa điểm
+                Tạo trang đăng ký tham gia sự kiện và trang quản lý sự kiện cho người tổ chức</p>
+        </div>
+    </div>
+    <script> 
+    function toggleTaskContent(taskHeader) {
+    var content = taskHeader.nextElementSibling;
+    content.classList.toggle('show');
+}
+</script>
+</body>
+</html>
